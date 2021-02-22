@@ -5,29 +5,28 @@ import './App.css';
 
 function App() {
 
-  var person = {
-    name: "dr. Mahfuz",
-    job: 'singer'
-  }
-  var style = {
-    color: 'red',
-    backgroundColor: 'yellow'
-  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit done <code>src/App.js</code> and save to reload.
-        </p>
-        {/* <h1>{2+3}</h1> */}
-        <h1 style={style}>{person.name + " " + person.job}</h1>
-       
-
-        <p style={{backgroundColor:"cyan", color:'red'}}>My first react paragraph</p>
+       <p>I am a React</p>
+       <Person></Person>
+       <Person></Person>
+       <Person></Person>
       </header>
     </div>
   );
+}
+function Person(){
+  return (
+    // Multiple compoonent
+  <div style={{
+      border: '2px solid red', 
+      margin: '10px'
+    }}>
+    <h1>Name: Sakib Al Hasan</h1>
+    <h3>Hero of the year</h3>
+    </div>
+  )
 }
 
 export default App;
