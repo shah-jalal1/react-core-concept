@@ -12,10 +12,17 @@ function App() {
     { name: 'Premuere El', price: '$249.99' }
   ];
 
-  
+  const friends = [
+    {name: 'tasnim', age: '26'},
+    {name: 'zamil', age: '36'},
+    {name: 'poran', age: '56'},
+    {name: 'rakib', age: '98'},
+    {name: 'asif', age: '46'},
+    {name: 'sakib', age: '54'}
+  ];
 
   const nayokNames = nayoks.map(nayok => nayok);
-  console.log(nayokNames);
+  // console.log(nayokNames);
   return (
     <div className="App">
       <header className="App-header">
@@ -40,6 +47,11 @@ function App() {
         <Person name="Mousumi"></Person>
         <Person name="bapparaz"></Person>
         <Person name="Arefin Nisho"></Person>
+
+        {
+          friends.map(fr => <Friend friend={fr}></Friend>)
+        }
+
       </header>
     </div>
   );
@@ -81,6 +93,25 @@ function Person(props) {
       {/* <h1>Name: Sakib Al Hasan</h1> */}
       <h1>Name: {props.name}</h1>
       <h3>Hero of the year</h3>
+    </div>
+  )
+}
+
+function Friend(props) {
+  const {name, age} = props.friend;
+  
+  const friendStyle = {
+    border: '1px solid gray',
+    borderRadius: '5px',
+    backgroundColor: '#808000',
+    height: '200px',
+    widht: '200px',
+    float: 'left'
+  }
+  return (
+    <div style={friendStyle}>
+        <h1>name: {name}</h1>
+        <h5>age: {age}</h5>
     </div>
   )
 }
