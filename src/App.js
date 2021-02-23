@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -27,6 +27,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>I am a React</p>
+        <Counter></Counter>
         <ul>
           {
             nayoks.map(nayok => <li>{nayok}</li>)
@@ -97,6 +98,21 @@ function Person(props) {
   )
 }
 
+function Counter() {
+  const [count, setCount] = useState(10);
+  // const handleIncrease = () => {
+  //   const newCount = count + 1;
+  //   setCount(newCount);
+  // }
+  return(
+    <div>
+        <h1>Count: {count}</h1>
+        <button onClick={() => setCount(count-1)}>Decrese</button>
+        <button onClick={() => setCount(count + 1)}>Increase</button>
+    </div>
+  )
+}
+
 function Friend(props) {
   const {name, age} = props.friend;
   
@@ -108,6 +124,7 @@ function Friend(props) {
     widht: '200px',
     float: 'left'
   }
+  
   return (
     <div style={friendStyle}>
         <h1>name: {name}</h1>
