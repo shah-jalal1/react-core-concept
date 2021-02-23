@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -28,6 +28,8 @@ function App() {
       <header className="App-header">
         <p>I am a React</p>
         <Counter></Counter>
+        <Users></Users>
+        
         <ul>
           {
             nayoks.map(nayok => <li>{nayok}</li>)
@@ -53,12 +55,55 @@ function App() {
           friends.map(fr => <Friend friend={fr}></Friend>)
         }
 
+        <Posts></Posts>
+
       </header>
     </div>
   );
 }
 
+function Posts() {
 
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(res => res.json())
+    .then(data => setPosts(data));
+  }, []);
+
+
+  return(
+    <div>
+      <h3>Total Posts: {posts.length}</h3>
+      {
+        posts.map(post => <li>{post.title}</li>)
+      }
+      
+    </div>
+  )
+}
+
+function Users() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(data => setUsers(data))
+  }, [])
+
+  return(
+    <div>
+        <h3>Dynamic Users: {users.length}</h3>
+        <ul>
+          {
+            users.map(user => <li>{user.name}</li>)
+          }
+        </ul>
+    </div>
+  )
+}
 
 function Product(props) {
   const productStyle = {
