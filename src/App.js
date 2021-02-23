@@ -4,20 +4,37 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const nayoks = ['anwar', 'apurbo', 'alomgir', 'salman shah']
+  const nayoks = ['anwar', 'apurbo', 'alomgir', 'salman shah', 'razzak', 'josim'];
   const products = [
     { name: 'photoshop', price: '$90.99' },
     { name: 'Illustrator', price: '$60.99' },
-    { name: 'PDF Reader', price: '$6.99' }
-  ]
+    { name: 'PDF Reader', price: '$6.99' },
+    { name: 'Premuere El', price: '$249.99' }
+  ];
+
+  
+
+  const nayokNames = nayoks.map(nayok => nayok);
+  console.log(nayokNames);
   return (
     <div className="App">
       <header className="App-header">
         <p>I am a React</p>
-
+        <ul>
+          {
+            nayoks.map(nayok => <li>{nayok}</li>)
+          }
+          <br/>
+          {
+            products.map(product => <li>{product.name}</li>)
+          }
+        </ul>
         {/* <Product name={products[0].name} price={products[0].price}></Product> */}
-        <Product product={products[0]}></Product>
-        <Product product={products[1]}></Product>
+        {/* <Product product={products[0]}></Product>
+        <Product product={products[1]}></Product> */}
+        {
+          products.map(pd => <Product product={pd}></Product>)
+        }
 
         <Person name={nayoks[0]}></Person>
         <Person name="Mousumi"></Person>
@@ -27,6 +44,8 @@ function App() {
     </div>
   );
 }
+
+
 
 function Product(props) {
   const productStyle = {
@@ -52,7 +71,7 @@ function Product(props) {
 }
 
 function Person(props) {
-  console.log(props);
+  // console.log(props);
   return (
     // Multiple compoonent
     <div style={{
